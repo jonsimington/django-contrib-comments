@@ -128,8 +128,7 @@ def post_comment(request, next=None, using=None):
         request=request
     )
 
-    return next_redirect(request, fallback=next or 'comments-comment-done',
-        c=comment._get_pk_val())
+    return next_redirect(request, fallback=next)
 
 comment_done = confirmation_view(
     template="comments/posted.html",
