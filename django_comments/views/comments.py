@@ -128,7 +128,7 @@ def post_comment(request, next=None, using=None):
         request=request
     )
 
-    if user.groups.filter(name='Applicant').exists():
+    if request.user.groups.filter(name='Applicant').exists():
         return redirect("/application/submit")
     else:
         return redirect("/applications/")
