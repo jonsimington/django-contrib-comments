@@ -4,7 +4,7 @@ from django import http
 from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist, ValidationError
 from django.db import models
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
 from django.template.loader import render_to_string
 from django.utils.html import escape
@@ -128,7 +128,7 @@ def post_comment(request, next=None, using=None):
         request=request
     )
 
-    return next_redirect(request)
+    return redirect("/applications/")
 
 comment_done = confirmation_view(
     template="comments/posted.html",
