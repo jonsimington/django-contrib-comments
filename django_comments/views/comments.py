@@ -128,7 +128,7 @@ def post_comment(request, next=None, using=None):
         request=request
     )
 
-    return next_redirect(request, fallback=next)
+    return next_redirect(request)
 
 comment_done = confirmation_view(
     template="comments/posted.html",
