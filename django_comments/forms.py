@@ -94,7 +94,7 @@ class CommentDetailsForm(CommentSecurityForm):
     """
     Handles the specific details of the comment (name, comment, etc.).
     """
-    comment       = forms.CharField(label=_('Comment'), widget=forms.Textarea,
+    comment       = forms.CharField(widget=forms.Textarea,
                                     max_length=COMMENT_MAX_LENGTH)
 
     def get_comment_object(self):
