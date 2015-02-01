@@ -3,7 +3,7 @@
   {% if next %}<div><input type="hidden" name="next" value="{{ next }}" /></div>{% endif %}
   {% for field in form %}
     {% if field.is_hidden %}
-      <div>{{ field }}</div>
+      <div{% ifequal field.name "comment" %} style="width:100%"{% endifequal %}>{{ field }}</div>
     {% else %}
       {% if field.errors %}{{ field.errors }}{% endif %}
       <p
