@@ -131,7 +131,7 @@ def post_comment(request, next=None, using=None):
     if request.user.groups.filter(name='Applicant').exists():
         return redirect("/application/submit")
     else:
-        return redirect("/applications/")
+        return redirect("/applications/open/")
 
 comment_done = confirmation_view(
     template="comments/posted.html",
