@@ -131,6 +131,9 @@ def post_comment(request, next=None, using=None):
     # get current page
     current_page = request.get_full_path()
 
+    # remove "/comments/post/" from path
+    current_page = rchop(current_page, '/comments/post/')
+    
     # get entry id
     entry_id = comment.content_object.id
 
@@ -141,3 +144,8 @@ comment_done = confirmation_view(
     template="comments/posted.html",
     doc="""Display a "comment was posted" success page."""
 )
+
+def rchop(thestring, ending):
+    if thestring.endswith(ending):
+        return thestring[:-len(ending)]
+      return thestring
