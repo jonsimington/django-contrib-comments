@@ -131,10 +131,13 @@ def post_comment(request, next=None, using=None):
     # get current page
     current_page = request.META['HTTP_REFERER']
 
-    # remove "/comments/post/" from path
-    #current_page = rchop(current_page, '/comments/post/')
-
-    print current_page
+    # remove "?entry={{ number }}" from path
+    while '?entry=' in url:
+        while url[-1].isdigit():
+            url = rchop(url, url[-1])
+            
+        # remove ?entry= and the next number
+        url = rchop(url, '?entry=')
     
     # get entry id
     entry_id = comment.content_object.id
