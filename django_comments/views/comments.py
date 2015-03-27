@@ -129,7 +129,7 @@ def post_comment(request, next=None, using=None):
     )
 
     # get current page
-    current_page = request.META['HTTP_REFERER']
+    url = request.META['HTTP_REFERER']
 
     # remove "?entry={{ number }}" from path
     while '?entry=' in url:
@@ -143,7 +143,7 @@ def post_comment(request, next=None, using=None):
     entry_id = comment.content_object.id
 
     # redirect to current page, open comments
-    return redirect(current_page + "?entry=" + str(entry_id))
+    return redirect(url + "?entry=" + str(entry_id))
 
 comment_done = confirmation_view(
     template="comments/posted.html",
