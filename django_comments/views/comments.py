@@ -128,10 +128,14 @@ def post_comment(request, next=None, using=None):
         request=request
     )
 
-    if request.user.groups.filter(name='Applicant').exists():
-        return redirect("/application/submit")
-    else:
-        return redirect("/applications/open/?app={}".format(comment.content_object.user.username))
+    # get current page
+    current_page = request.get_full_path()
+
+    # get entry id
+    entry_id = comment.content_object.id
+
+    # redirect to current page, open comments
+    return redirect(current_page + "?entry=" + entry_id)
 
 comment_done = confirmation_view(
     template="comments/posted.html",
