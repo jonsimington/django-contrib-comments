@@ -129,10 +129,10 @@ def post_comment(request, next=None, using=None):
     )
 
     # get current page
-    current_page = request.get_full_path()
+    current_page = request.META['HTTP_REFERER']
 
     # remove "/comments/post/" from path
-    current_page = rchop(current_page, '/comments/post/')
+    #current_page = rchop(current_page, '/comments/post/')
 
     print current_page
     
