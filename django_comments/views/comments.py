@@ -133,6 +133,8 @@ def post_comment(request, next=None, using=None):
 
     # remove "/comments/post/" from path
     current_page = rchop(current_page, '/comments/post/')
+
+    print current_page
     
     # get entry id
     entry_id = comment.content_object.id
