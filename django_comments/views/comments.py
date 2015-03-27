@@ -148,4 +148,4 @@ comment_done = confirmation_view(
 def rchop(thestring, ending):
     if thestring.endswith(ending):
         return thestring[:-len(ending)]
-      return thestring
+    return thestring
