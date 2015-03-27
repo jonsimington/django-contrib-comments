@@ -135,7 +135,7 @@ def post_comment(request, next=None, using=None):
     entry_id = comment.content_object.id
 
     # redirect to current page, open comments
-    return redirect(current_page + "?entry=" + entry_id)
+    return redirect(current_page + "?entry=" + str(entry_id))
 
 comment_done = confirmation_view(
     template="comments/posted.html",
